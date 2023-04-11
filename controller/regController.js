@@ -27,28 +27,28 @@ if(!password){
 if(password.length < 6){
     return res.status(404).send(`Password cannot be less than 6`)
 }
-// try{
-// const alreadyExist = await Registration.findOne({ where: {email}})
-// if(alreadyExist){
-//     return res.status(404).send('Email already exist')
-// }
-// const encryptedPassword = await bcrypt.hash(password, 10)
-// const newReg = await Registration.create({
-//     id: uuidv4(),
-//     firstname,
-//     lastname,
-//     age,
-//     email,
-//     address,
-//     password: encryptedPassword,
-// })
-// const token = jwt.sign({ id: newReg.id, email }, "secret_key" )
-// console.log(newReg);
-// return res.status(201).json({ message: `${newReg.firstname} ${newReg.lastname} created successfully`, token})
-// } 
-// catch (err) {
-// console.log(err);
-// }
+try{
+const alreadyExist = await Registration.findOne({ where: {email}})
+if(alreadyExist){
+    return res.status(404).send('Email already exist')
+}
+const encryptedPassword = await bcrypt.hash(password, 10)
+const newReg = await Registration.create({
+    id: uuidv4(),
+    firstname,
+    lastname,
+    age,
+    email,
+    address,
+    password: encryptedPassword,
+})
+const token = jwt.sign({ id: newReg.id, email }, "secret_key" )
+console.log(newReg);
+return res.status(201).json({ message: `${newReg.firstname} ${newReg.lastname} created successfully`, token})
+} 
+catch (err) {
+console.log(err);
+}
 
 }
 
