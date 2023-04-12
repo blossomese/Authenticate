@@ -44,7 +44,14 @@ const newReg = await Registration.create({
 })
 const token = jwt.sign({ id: newReg.id, email }, "secret_key" )
 console.log(newReg);
-return res.status(201).json({ message: `${newReg.firstname} ${newReg.lastname} created successfully`, token})
+return res.status(201).json({ message: `${newReg.firstname} ${newReg.lastname} created successfully`, data: {
+    token,
+    firstname,
+    lastname,
+    age,
+    email,
+    address,
+}})
 } 
 catch (err) {
 console.log(err);
