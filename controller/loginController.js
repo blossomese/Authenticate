@@ -17,8 +17,8 @@ const login = async (req, res) => {
     if (user && (await bcrypt.compare(password, user.password))) {
       return res.status(201).json({ OK: true });
     }
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err);
     res.status(500).send(`Something went wrong, please try again!`);
   }
 };
