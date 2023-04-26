@@ -10,11 +10,7 @@ const Registration = () => {
     address: "",
     password: "",
   });
-  const [lastname, setLastName] = useState("");
-  const [age, setAge] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [password, setPassword] = useState("");
+  
 
   const handleChange = (e) => {
     setFormData((prevFormData) => {
